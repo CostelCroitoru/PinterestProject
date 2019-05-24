@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <h1>Index.html</h1>
+
+
+    <p th:text="${firstname}"></p>
+    
+    <img src="/images/animal-hybrids-fb__700.jpg" width="400" height="300">
+
+    <div sec:authorize="isAuthenticated()">
+
+        <footer>
+
+            <form th:action="@{/perform_logout}" method="post">
+                <input type="submit" value="Logout">
+            </form>
+        </footer>
+
+    </div>
+
+
+
+
+</body>
+</html>

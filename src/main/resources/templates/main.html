@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+    <p th:text="${firstname}"></p>
+
+    <div sec:authorize="isAuthenticated()">
+        This content is only shown to authenticated users.
+
+
+    </div>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        This content is only shown to administrators.
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        This content is only shown to users.
+    </div>
+
+
+    Logged user: <span sec:authentication="name">Bob</span>
+
+    <img src="images/background_image.jpg" alt="Background-image" width="400" height="300">
+
+
+    <img th:src="@{${img_src}}" width="400" height="300">
+
+
+    <div sec:authorize="isAuthenticated()">
+        <footer>
+            <form th:action="@{/perform_logout}" method="post">
+                <input type="submit" value="Logout">
+            </form>
+
+        </footer>
+    </div>
+</body>
+</html>
